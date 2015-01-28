@@ -1,0 +1,14 @@
+<h1>Sites + Current Status</h1>
+
+<table>
+  <% sites.each do |site| %>
+  <tr>
+      <td><%= site.url %></td>
+      <td><%= site.statuses.last.status if site.statuses.last %></td>
+      <td><%= link_to('details', site_path(site)) %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+

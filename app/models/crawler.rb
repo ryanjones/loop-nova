@@ -7,19 +7,25 @@ class Crawler
 
   def crawl
     begin
-      self.response = RestClient.get site.url
+      3.times do
+        self.response = RestClient.get site.url
+        break if site_up?
+      end
     rescue
     end
-
     save_status
   end
 
 private
   def save_status
-    if response.present? && response.code == 200
+    if site_up?
       site.statuses << Status.create(status: "up")
     else
       site.statuses << Status.create(status: "down")
     end
+  end
+
+  def site_up?
+    response.present? && response.code == 200
   end
 end

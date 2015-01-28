@@ -1,0 +1,16 @@
+<h1><%= site.url %></h1>
+
+<table>
+  <tr>
+    <td>Status</td>
+    <td>Created At</td>
+  </tr>
+  <% site.statuses.order(created_at: :desc).last(10).each do |status| %>
+    <tr>
+      <td><%= status.status %></td>
+      <td><%= status.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'home', root_path %>

@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Site.find_or_create_by(url: 'google.ca')
+Site.find_or_create_by(url: 'localhost:3000')
+
