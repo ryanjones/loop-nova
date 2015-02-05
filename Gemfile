@@ -29,9 +29,6 @@ gem 'foundation-rails'
 
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
   gem 'pry'
 
   gem 'better_errors'
@@ -41,6 +38,15 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
+end
+
+group :test do
+  gem "capybara"
+  gem "factory_girl_rails"
+  gem "launchy"
+  gem "capybara-webkit"
+  gem "database_cleaner"
+  gem 'webmock'
 end
 
 
