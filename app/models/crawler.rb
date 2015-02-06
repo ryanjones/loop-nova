@@ -8,7 +8,13 @@ class Crawler
   def crawl
     begin
       3.times do
-        self.response = RestClient.get site.url
+        self.response = RestClient::Request.execute(
+          method: :get,
+          url: site.url,
+          timeout: Rails.configuration.site_timeout,
+          open_timeout: Rails.configuration.site_timeout
+        )
+
         break if site_up?
       end
     rescue

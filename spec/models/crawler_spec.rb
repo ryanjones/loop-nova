@@ -1,7 +1,7 @@
 describe 'Crawler' do
   let(:create_site) { Site.create(url: 'example.com') }
-  let(:response_500) { allow(RestClient).to receive(:get).and_return(OpenStruct.new(code: 500)) }
-  let(:response_200) { allow(RestClient).to receive(:get).and_return(OpenStruct.new(code: 200)) }
+  let(:response_500) { allow(RestClient::Request).to receive(:execute).and_return(OpenStruct.new(code: 500)) }
+  let(:response_200) { allow(RestClient::Request).to receive(:execute).and_return(OpenStruct.new(code: 200)) }
 
   it "create a status record for a site that's up" do
     response_200

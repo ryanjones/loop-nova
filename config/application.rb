@@ -22,5 +22,9 @@ module LoopNova
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # How long you'll wait before you consider the site down
+    config.site_timeout = ENV['SITE_TIMEOUT'] || 20
+
   end
 end

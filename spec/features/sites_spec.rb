@@ -4,12 +4,12 @@ feature "Sites" do
     let(:create_example_org) { Site.find_or_create_by(url: 'example.org') }
     let(:site_up) do
       site = create_example_com
-      allow(RestClient).to receive(:get) { OpenStruct.new(code: 200) }
+      allow(RestClient::Request).to receive(:execute) { OpenStruct.new(code: 200) }
       Crawler.new(site: site).crawl
     end
     let(:site_down) do
       site = create_example_org
-      allow(RestClient).to receive(:get) { OpenStruct.new(code: 404) }
+      allow(RestClient::Request).to receive(:execute) { OpenStruct.new(code: 404) }
       Crawler.new(site: site).crawl
     end
 
