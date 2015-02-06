@@ -14,7 +14,7 @@
         </tr>
       </thead>
 
-      <% site.statuses.order(created_at: :desc).last(10).each do |status| %>
+      <% site.statuses.order(created_at: :desc).first(10).each do |status| %>
         <tr>
           <td><%= status.status %></td>
           <td><%= status.created_at %></td>
