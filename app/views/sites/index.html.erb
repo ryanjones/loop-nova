@@ -15,10 +15,10 @@
         </tr>
       </thead>
 
-      <% sites.each do |site| %>
-        <tr>
+      <% sites_presenter.each do |site| %>
+        <tr class="<%= site.background_color %>">
           <td><%= site.url %></td>
-          <td><%= site.statuses.last.status if site.statuses.last %></td>
+          <td><%= site.status %></td>
           <td><%= link_to('details', site_path(site)) %></td>
         </tr>
       <% end %>

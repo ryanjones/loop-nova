@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rest-client'
 gem 'decent_exposure'
 gem 'foundation-rails'
-
+gem 'draper', '~> 1.3'
 
 group :development, :test do
   gem 'pry'
