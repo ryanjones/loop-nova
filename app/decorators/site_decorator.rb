@@ -1,5 +1,6 @@
 class SiteDecorator < Draper::Decorator
   delegate_all
+  decorates_association :statuses, scope: :recent
 
   def background_color
     status = statuses.last
@@ -8,7 +9,7 @@ class SiteDecorator < Draper::Decorator
     ''
   end
 
-  def status
-    statuses.last.status
+  def last_status
+    statuses.last.status.status
   end
 end

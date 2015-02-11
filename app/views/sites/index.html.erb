@@ -18,7 +18,7 @@
       <% sites_presenter.each do |site| %>
         <tr class="<%= site.background_color %>">
           <td><%= site.url %></td>
-          <td><%= site.status %></td>
+          <td><%= site.last_status %></td>
           <td><%= link_to('details', site_path(site)) %></td>
         </tr>
       <% end %>

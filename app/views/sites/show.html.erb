@@ -14,9 +14,9 @@
         </tr>
       </thead>
 
-      <% site_presenter.statuses.order(created_at: :desc).first(10).each do |status| %>
-        <tr>
-          <td><%= status.status %></td>
+      <% site_presenter.statuses.each do |status| %>
+        <tr class="<%= status.background_color %>">
+          <td><%= status.status.status %></td>
           <td><%= status.created_at %></td>
         </tr>
       <% end %>
