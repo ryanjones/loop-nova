@@ -50,7 +50,6 @@ feature "Sites" do
     scenario "site up with multiple statuses" do
       site_up_and_down
       visit root_path
-      save_and_open_page
       expect(page).to have_text("example.com")
       expect(page).to have_text("up")
     end
