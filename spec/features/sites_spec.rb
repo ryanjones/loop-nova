@@ -13,6 +13,16 @@ feature "Sites" do
       Crawler.new(site: site).crawl
     end
 
+    let(:site_up_and_down) do
+      site = create_example_com
+      allow(RestClient::Request).to receive(:execute) { OpenStruct.new(code: 404) }
+      Crawler.new(site: site).crawl
+      Crawler.new(site: site).crawl
+      Crawler.new(site: site).crawl
+      allow(RestClient::Request).to receive(:execute) { OpenStruct.new(code: 200) }
+      Crawler.new(site: site).crawl
+    end
+
     scenario "the site is up" do
       site_up
       visit root_path
@@ -35,6 +45,14 @@ feature "Sites" do
       expect(page).to have_text("up")
       expect(page).to have_text("example.org")
       expect(page).to have_text("down")
+    end
+
+    scenario "site up with multiple statuses" do
+      site_up_and_down
+      visit root_path
+      save_and_open_page
+      expect(page).to have_text("example.com")
+      expect(page).to have_text("up")
     end
   end
 end

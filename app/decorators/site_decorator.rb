@@ -3,13 +3,13 @@ class SiteDecorator < Draper::Decorator
   decorates_association :statuses, scope: :recent
 
   def background_color
-    status = statuses.last
+    status = statuses.first
     return 'site-up' if status.up?
     return 'site-down' if status.down?
     ''
   end
 
-  def last_status
-    statuses.last.status.status
+  def most_recent_status
+    statuses.first.status.status
   end
 end
