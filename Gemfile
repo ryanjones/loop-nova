@@ -27,6 +27,11 @@ gem 'rest-client'
 gem 'decent_exposure'
 gem 'foundation-rails'
 gem 'draper', '~> 1.3'
+gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
+
+group :development do
+  gem "letter_opener"
+end
 
 group :development, :test do
   gem 'pry'

@@ -23,8 +23,17 @@ module LoopNova
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+
+    ############## loop nova config needs to be in a config block/initializer ###################
+
     # How long you'll wait before you consider the site down
     config.site_timeout = ENV['SITE_TIMEOUT'] || 20
+
+    # SES default from address
+    config.aws_ses_default_mailer = ENV['AWS_SES_DEFAULT_MAILER']
+    config.user_to_notify = 'ryan@system88.com'
+
+
 
   end
 end
