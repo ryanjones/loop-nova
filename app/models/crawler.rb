@@ -28,6 +28,7 @@ private
       site.statuses << Status.create(status: "up")
     else
       site.statuses << Status.create(status: "down")
+      OutageMailer.outage_email(site).deliver
     end
   end
 
